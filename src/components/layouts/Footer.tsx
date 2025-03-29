@@ -1,9 +1,9 @@
 export default function Footer() {
   return (
     <>
-      <footer className="relative min-h-screen">
+      <footer className="relative flex items-center justify-center bottom-0 h-16 bg-blue-950">
         <div>
-          <h1>Footer</h1>
+          <p className="text-white font-medium">Copyright &copy; 2025 | All Rights Reserved</p>
         </div>
       </footer>
     </>
