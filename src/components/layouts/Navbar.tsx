@@ -9,11 +9,11 @@ import { SekolahItems, KlinikItems, UnitItems } from "../elements/NavbarItems";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const [expandItem, setExpandItem] = useState({});
+  const [expandItem, setExpandItem] = useState(null);
 
-  const expandNavbar = (isExpanded: React.SetStateAction<{}>) => {
+  const expandNavbar = (isExpanded: any) => {
     if (expandItem === isExpanded) {
-      setExpandItem({});
+      setExpandItem(null);
     } else {
       setExpandItem(isExpanded);
     }
@@ -34,7 +34,7 @@ export default function Navbar() {
             ) : (
               <FaIcons.FaBars
                 onClick={() => {
-                  setExpandItem({});
+                  setExpandItem(null);
                   setSidebar(!sidebar);
                 }}
               />
