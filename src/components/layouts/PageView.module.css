@@ -1,0 +1,12 @@
+.cardInformation {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 902px) {
+  .cardInformation {
+    flex-direction: column;
+    gap: 0;
+  }
+}

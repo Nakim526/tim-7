@@ -1,0 +1,196 @@
+.navMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-inline: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navText {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 100%;
+  width: max-content;
+}
+
+.navText:hover {
+  background-color: #242424;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.navParent {
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+  color: white;
+  font-weight: 600;
+  height: 100%;
+  width: max-content;
+}
+
+.navTextParent {
+  position: relative;
+  font-weight: 600;
+  height: 100%;
+  width: 100%;
+  padding: 8px 16px;
+}
+
+.navParent:hover {
+  background-color: #242424;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.navChild {
+  left: -10%;
+  right: -10%;
+  position: absolute;
+  visibility: hidden;
+  background-color: #242424;
+  border-radius: 12px;
+  position: absolute;
+  list-style-type: none;
+  color: white;
+  font-weight: 600;
+  height: max-content;
+  width: 120%;
+  padding: 4px;
+  top: 30px;
+  transition: 100ms;
+}
+
+.navChild.active {
+  top: 50px;
+  visibility: visible;
+  transition: 500ms;
+}
+
+.navTextChild {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 100%;
+  width: 100%;
+}
+
+.navTextChild:hover {
+  background-color: white;
+  border-radius: 8px;
+  color: #162456;
+}
+
+.topLogo {
+  display: none;
+}
+
+.menuBars {
+  display: none;
+}
+
+@media screen and (max-width: 902px) {
+  .menuBars {
+    display: inline;
+    color: white;
+    font-size: 1.5rem;
+    z-index: 100;
+  }
+
+  .topLogo {
+    display: block;
+    height: 5rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .navMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    flex-direction: column;
+    width: 300px;
+    background-color: #242424;
+    height: 100vh;
+    align-items: start;
+    justify-content: start;
+    transition: 800ms;
+  }
+
+  .navItems {
+    flex-direction: column;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+    height: 100%;
+  }
+
+  .navMenu.active {
+    right: 0;
+    transition: 500ms;
+  }
+
+  .navText,
+  .navTextParent {
+    height: max-content;
+    width: 100%;
+  }
+
+  .navText:hover,
+  .navTextParent:hover {
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 8px;
+    color: #242424;
+  }
+
+  .navParent {
+    top: 0;
+    position: relative;
+    width: 100%;
+    height: max-content;
+  }
+
+  .navChild {
+    left: -10px;
+    right: 0;
+    top: 0;
+    background-color: #242424;
+    border-radius: 0;
+    position: relative;
+    color: white;
+    font-weight: 600;
+    height: 0;
+    visibility: hidden;
+    width: 100%;
+    opacity: 0;
+    transition: 100ms;
+    padding: 0 0 0 14px;
+  }
+
+  .navChild.active {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    height: max-content;
+    visibility: visible;
+    transition: 600ms;
+  }
+
+  .navTextChild {
+    height: max-content;
+    border-left: gray solid 4px;
+  }
+}
