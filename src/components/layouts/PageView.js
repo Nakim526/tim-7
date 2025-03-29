@@ -17,9 +17,9 @@ export default function PageView({ children }) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative h-max w-[80%] p-10 m-16 bg-amber-100 rounded-md">
+      <div className="relative h-max w-[80%] md:p-10 p-5 m-16 bg-amber-100 rounded-md">
         <div className="absolute -top-5 left-0 right-0 z-5 flex justify-center">
-          <h1 className=" bg-red-100 px-5 py-3 rounded-2xl">
+          <h1 className=" bg-red-100 px-5 py-3 rounded-2xl text-center">
             Ikuti Kegiatan Kami
           </h1>
         </div>
@@ -33,7 +33,7 @@ export default function PageView({ children }) {
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             slidesPerView={1}
             controller={{ control: controlledSwiper }}
-            className="md:h-[calc(100vh-200px)] h-[calc(100vh-400px)] w-full"
+            className="md:h-[calc(100vh-200px)] aspect-square w-full"
           >
             <SwiperSlide>
               <img
