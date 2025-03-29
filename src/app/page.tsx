@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <PageView />
-      <div className="h-max bg-amber-50 w-full p-20">
+      <div className="h-max bg-amber-50 w-full md:p-20 p-8">
         <div className="flex flex-col gap-4 pb-32 items-center">
           <h1>Apa itu Tim7?</h1>
           <h4>
