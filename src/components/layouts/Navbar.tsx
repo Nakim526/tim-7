@@ -9,11 +9,15 @@ import { SekolahItems, KlinikItems, UnitItems } from "../elements/NavbarItems";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const [expandItem, setExpandItem] = useState(null);
+  const [expandItem, setExpandItem] = useState<
+    { title: string; path: string }[]
+  >([]);
 
-  const expandNavbar = (isExpanded: any) => {
+  const expandNavbar = (
+    isExpanded: React.SetStateAction<{ title: string; path: string }[]>
+  ) => {
     if (expandItem === isExpanded) {
-      setExpandItem(null);
+      setExpandItem([]);
     } else {
       setExpandItem(isExpanded);
     }
@@ -34,22 +38,15 @@ export default function Navbar() {
             ) : (
               <FaIcons.FaBars
                 onClick={() => {
-                  setExpandItem(null);
+                  setExpandItem([]);
                   setSidebar(!sidebar);
                 }}
               />
             )}
           </div>
-          <div
-            className={`${styles.navMenu} ${
-              sidebar ? styles.active : ""
-            }`}
-          >
+          <div className={`${styles.navMenu} ${sidebar ? styles.active : ""}`}>
             <div className={`flex ${styles.topLogo} w-max h-full`}>
-              <Link
-                href="/"
-                className="flex items-center h-full w-max m-auto"
-              >
+              <Link href="/" className="flex items-center h-full w-max m-auto">
                 <img
                   src="./tim7-logo.png"
                   alt="Logo"
