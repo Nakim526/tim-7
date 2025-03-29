@@ -71,11 +71,11 @@ export default function PageView() {
           <SwiperSlide>
             <div className="mt-4">
               <h1 className={style.title}>Slide 1</h1>
-              <h6>
+              <p className="description">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Voluptas laborum assumenda laboriosam incidunt ullam, sint
                 repudiandae minus magnam illum quis?
-              </h6>
+              </p>
               <Row css="my-4 justify-between items-start">
                 <div className="flex flex-col gap-2">
                   <Row css="items-center gap-3">
@@ -106,11 +106,11 @@ export default function PageView() {
           <SwiperSlide>
             <div className="mt-4">
               <h1 className={style.title}>Slide 2</h1>
-              <h6>
+              <p className="description">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Voluptas laborum assumenda laboriosam incidunt ullam, sint
                 repudiandae minus magnam illum quis?
-              </h6>
+              </p>
               <Row css="my-4 justify-between items-start">
                 <div className="flex flex-col gap-2">
                   <Row css="items-center gap-3">
@@ -141,11 +141,11 @@ export default function PageView() {
           <SwiperSlide>
             <div className="mt-4">
               <h1 className={style.title}>Slide 3</h1>
-              <h6>
+              <p className="description">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Voluptas laborum assumenda laboriosam incidunt ullam, sint
                 repudiandae minus magnam illum quis?
-              </h6>
+              </p>
               <Row css="my-4 justify-between items-start">
                 <div className="flex flex-col gap-2">
                   <Row css="items-center gap-3">

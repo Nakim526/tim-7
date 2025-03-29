@@ -71,6 +71,12 @@ button:hover {
   box-shadow: #162456 1px 2px 10px 1px;
 }
 
+.description {
+  font-weight: 600;
+  line-height: 2;
+  text-align: justify;
+}
+
 .icon {
   cursor: pointer;
 }

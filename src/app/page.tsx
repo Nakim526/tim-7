@@ -10,7 +10,7 @@ export default function Home() {
       <div className="h-max bg-amber-50 w-full md:p-20 p-8">
         <div className="flex flex-col gap-4 pb-32 items-center">
           <h1>Apa itu Tim7?</h1>
-          <h4>
+          <p className="description">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
             repellat soluta iste, ab rem, quasi quae animi aliquam corporis
             reprehenderit omnis libero provident itaque maiores? Voluptates
@@ -23,7 +23,7 @@ export default function Home() {
             libero architecto. Ullam, placeat ex id delectus aperiam, sit,
             voluptate vero asperiores perspiciatis dicta molestiae sunt culpa.
             Itaque, doloremque delectus.
-          </h4>
+          </p>
         </div>
         <h1 className="text-center">Alamat</h1>
         <div className="flex flex-col md:flex-row gap-8 my-10">
