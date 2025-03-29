@@ -81,7 +81,7 @@ export default function Home() {
               <FaIcons.FaYoutube className="icon text-2xl" />
               <FaIcons.FaTiktok className="icon text-2xl" />
             </Row>
-            <h6>#TagarTambahan</h6>
+            <h4 className="pt-4 ">#SampaiJumpaDimanaMana</h4>
           </div>
         </div>
       </div>
