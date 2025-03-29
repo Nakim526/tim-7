@@ -35,7 +35,7 @@ export default function PageView() {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           slidesPerView={1}
           controller={{ control: controlledSwiper }}
-          className="md:h-[calc(100vh-200px)] aspect-square w-full"
+          className="aspect-[4/3] w-full"
         >
           <SwiperSlide>
             <img
