@@ -4,7 +4,7 @@ import * as RiIcons from "react-icons/ri";
 import * as TbIcons from "react-icons/tb";
 import { FaEdit } from "react-icons/fa";
 import { ImExit } from "react-icons/im";
-import style from "./Dashboard.module.css";
+import style from "./dashboard.module.css";
 // import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
