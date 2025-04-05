@@ -1,10 +1,5 @@
 import { supabaseDB } from "@/lib/supabase/init";
 
-interface Notes {
-  id: number;
-  title: string;
-}
-
 const fetchData = async () => {
   const { data, error } = await supabaseDB.from("notes").select("*");
   console.log("Error: ", error);
