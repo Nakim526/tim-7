@@ -6,16 +6,13 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 import Row from "../elements/Row";
 import { SekolahItems, KlinikItems, UnitItems } from "../elements/NavbarItems";
+import { NavbarItemProps } from "../../lib/interface";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const [expandItem, setExpandItem] = useState<
-    { title: string; path: string }[]
-  >([]);
+  const [expandItem, setExpandItem] = useState<NavbarItemProps[]>([]);
 
-  const expandNavbar = (
-    isExpanded: React.SetStateAction<{ title: string; path: string }[]>
-  ) => {
+  const expandNavbar = (isExpanded: NavbarItemProps[]) => {
     if (expandItem === isExpanded) {
       setExpandItem([]);
     } else {
@@ -26,10 +23,10 @@ export default function Navbar() {
   return (
     <>
       <div className="relative z-99">
-        <nav className="flex flex-row fixed top-0 left-0 right-0 h-20 bg-blue-950 items-center justify-between px-8">
+        <nav className="fixed top-0 left-0 right-0 flex flex-row items-center justify-between h-20 px-8 bg-blue-950">
           <div className="h-[60%] w-max">
             <Link href="/">
-              <img src="./tim7-logo.png" alt="Logo" className="logo h-full" />
+              <img src="./tim7-logo.png" alt="Logo" className="h-full logo" />
             </Link>
           </div>
           <div className={`${styles.menuBars} cursor-pointer`}>
@@ -46,7 +43,7 @@ export default function Navbar() {
           </div>
           <div className={`${styles.navMenu} ${sidebar ? styles.active : ""}`}>
             <div className={`flex ${styles.topLogo} w-max h-full`}>
-              <Link href="/" className="flex items-center h-full w-max m-auto">
+              <Link href="/" className="flex items-center h-full m-auto w-max">
                 <img
                   src="./tim7-logo.png"
                   alt="Logo"

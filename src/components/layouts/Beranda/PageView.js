@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import style from "./PageView.module.css";
-import Row from "../elements/Row";
+import Row from "../../elements/Row";
 import { FaCalendarAlt } from "react-icons/fa";
 import { GoShareAndroid } from "react-icons/go";
 import * as BiIcons from "react-icons/bi";
@@ -32,7 +32,7 @@ export default function PageView() {
           pagination={{ clickable: true }}
           spaceBetween={50}
           loop={true}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 5000 }}
           slidesPerView={1}
           controller={{ control: controlledSwiper }}
           className="aspect-[4/3] w-full"
@@ -78,15 +78,15 @@ export default function PageView() {
               </p>
               <Row css="my-4 justify-between items-start">
                 <div className="flex flex-col gap-2">
-                  <Row css="items-center gap-3">
+                  <Row css="items-center gap-2">
                     <span className="text-2xl">
                       <FaCalendarAlt />
                     </span>
-                    <p className="font-[500]">20 Januari 2023</p>
+                    <p className="font-[500] text-[14px]">20 Januari 2023</p>
                   </Row>
                   <p className="text-[14px]">Published by Admin</p>
                 </div>
-                <Row css="gap-3 text-2xl">
+                <Row css="gap-2 text-2xl">
                   <div className="flex flex-col items-center">
                     <span
                       onClick={() => setLiked(!liked)}
@@ -113,15 +113,15 @@ export default function PageView() {
               </p>
               <Row css="my-4 justify-between items-start">
                 <div className="flex flex-col gap-2">
-                  <Row css="items-center gap-3">
+                  <Row css="items-center gap-2">
                     <span className="text-2xl">
                       <FaCalendarAlt />
                     </span>
-                    <p className="font-[500]">20 Januari 2023</p>
+                    <p className="font-[500] text-[14px]">20 Januari 2023</p>
                   </Row>
                   <p className="text-[14px]">Published by Admin</p>
                 </div>
-                <Row css="gap-3 text-2xl">
+                <Row css="gap-2 text-2xl">
                   <div className="flex flex-col items-center">
                     <span
                       onClick={() => setLiked(!liked)}
@@ -148,15 +148,15 @@ export default function PageView() {
               </p>
               <Row css="my-4 justify-between items-start">
                 <div className="flex flex-col gap-2">
-                  <Row css="items-center gap-3">
+                  <Row css="items-center gap-2">
                     <span className="text-2xl">
                       <FaCalendarAlt />
                     </span>
-                    <p className="font-[500]">20 Januari 2023</p>
+                    <p className="font-[500] text-[14px]">20 Januari 2023</p>
                   </Row>
                   <p className="text-[14px]">Published by Admin</p>
                 </div>
-                <Row css="gap-3 text-2xl">
+                <Row css="gap-2 text-2xl">
                   <div className="flex flex-col items-center">
                     <span
                       onClick={() => setLiked(!liked)}

@@ -46,7 +46,7 @@ export const UnitItems = [
     path: "konfes-sky",
   },
   {
-    title: "Clothes",
-    path: "clothes",
+    title: "Mengena.kain",
+    path: "mengena-kain",
   },
 ];
