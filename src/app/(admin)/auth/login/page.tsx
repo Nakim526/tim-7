@@ -1,10 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const { push } = useRouter();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: e.currentTarget.email.value,
+        password: e.currentTarget.password.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Data: ", data);
+        if (data.status === 500) {
+          alert(data.message);
+        } else {
+          window.location.href = "/dashboard";
+        }
+      });
   };
   return (
     <>
@@ -17,13 +35,14 @@ export default function Login() {
             <form
               className="space-y-4 md:space-y-6"
               onSubmit={(e) => handleSubmit(e)}
+              method="POST"
             >
               <div>
                 <label
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white"
                 >
-                  Your email
+                  Your Email
                 </label>
                 <input
                   type="email"

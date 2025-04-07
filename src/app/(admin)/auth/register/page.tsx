@@ -1,10 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { push } = useRouter();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    await fetch("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify({
+        name: e.currentTarget.fullname.value,
+        email: e.currentTarget.email.value,
+        password: e.currentTarget.password.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Data: ", data);
+        if (data.status === 200) {
+          push("/auth/login");
+        } else {
+          alert(data.message);
+        }
+      });
   };
   return (
     <>
@@ -20,15 +39,15 @@ export default function Login() {
             >
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="fullname"
                   className="block mb-2 text-sm font-medium text-white"
                 >
-                  Your name
+                  Your Name
                 </label>
                 <input
                   type="text"
-                  name="name"
-                  id="name"
+                  name="fullname"
+                  id="fullname"
                   className=" border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Your name"
                   required
@@ -39,7 +58,7 @@ export default function Login() {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-white"
                 >
-                  Your email
+                  Your Email
                 </label>
                 <input
                   type="email"

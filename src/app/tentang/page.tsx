@@ -1,24 +1,47 @@
-import { supabaseDB } from "@/lib/supabase/init";
+"use client";
 
-const fetchData = async () => {
-  const { data, error } = await supabaseDB.from("notes").select("*");
-  console.log("Error: ", error);
-  if (error) throw error;
-  console.log("Data: ", data);
-  return data;
-};
+import { NotesProps } from "@/lib/interface";
+import { useEffect, useState } from "react";
 
-export default async function TentangPage() {
-  const data = await fetchData();
+// const fetchData = async () => {
+//   const res = await fetch("api/notes", {
+//     method: "GET",
+//     cache: "no-cache",
+//   });
+//   const data = await res.json();
+//   console.log(data);
+//   return data;
+// };
+
+export default function TentangPage() {
+  const [notes, setNotes] = useState<NotesProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getData = async () => {
+      await fetch("api/notes", {
+        method: "GET",
+        cache: "no-cache",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setNotes(data.data);
+          setLoading(false);
+        });
+    };
+    getData();
+  }, []);
 
   return (
     <>
       <div>
         <h1>Tentang Page</h1>
       </div>
+      {loading && <h1>Loading...</h1>}
       <div>
         <ul>
-          {data!.map((item) => {
+          {notes.map((item: NotesProps) => {
             return <li key={item.id}>{item.title}</li>;
           })}
         </ul>
