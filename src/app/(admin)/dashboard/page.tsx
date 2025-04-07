@@ -5,15 +5,14 @@ import * as TbIcons from "react-icons/tb";
 import { FaEdit } from "react-icons/fa";
 import { ImExit } from "react-icons/im";
 import style from "./dashboard.module.css";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 // import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
   const [sidebar, setSidebar] = useState(false);
-  const { push } = useRouter();
+  // const { push } = useRouter();
 
-  const handleLogout = async (e: any) => {
-    e.preventDefault();
+  const handleLogout = async () => {
     const res = await fetch("/api/auth/logout", { method: "POST" });
     if (res.status === 500) {
       const response = await res.json();
@@ -50,7 +49,7 @@ export default function Dashboard() {
                 <li className={style.sidebarItemText}>Profil</li>
                 <li
                   className={style.sidebarItemText}
-                  onClick={(e) => handleLogout(e)}
+                  onClick={() => handleLogout()}
                 >
                   Sign Out
                 </li>
@@ -81,7 +80,7 @@ export default function Dashboard() {
                 </li>
                 <li
                   className={style.sidebarItemIcon}
-                  onClick={(e) => handleLogout(e)}
+                  onClick={() => handleLogout()}
                 >
                   <ImExit />
                 </li>
