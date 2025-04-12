@@ -182,7 +182,13 @@ export default function Dashboard() {
             className="file-input file-input-primary"
             required
           />
-          <button className="m-auto mt-4 btn btn-primary">Submit</button>
+          <button
+            disabled={loading}
+            type="submit"
+            className="m-auto mt-4 btn btn-primary"
+          >
+            Submit
+          </button>
         </form>
         {data &&
           data.map((item: ArsipProps) => (
