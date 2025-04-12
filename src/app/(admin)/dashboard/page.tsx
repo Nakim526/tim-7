@@ -8,6 +8,8 @@ import style from "./dashboard.module.css";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { ArsipProps } from "@/lib/interface";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 
 export default function Dashboard() {
   const [sidebar, setSidebar] = useState(false);
@@ -27,6 +29,13 @@ export default function Dashboard() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
+    withReactContent(Swal).fire({
+      icon: "info",
+      title: "Please Wait",
+      text: "We are processing your request",
+      showConfirmButton: false,
+    });
     const form = e.currentTarget;
     const data = new FormData(form);
     const file = data.get("file") as File;
@@ -38,8 +47,28 @@ export default function Dashboard() {
       body: data,
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-      .finally(() => form.reset());
+      .then((data) => {
+        if (data.status === 200) {
+          withReactContent(Swal).fire({
+            icon: "success",
+            title: "Success",
+            text: data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          withReactContent(Swal).fire({
+            icon: "error",
+            title: "Error",
+            text: data.message,
+            showConfirmButton: true,
+          });
+        }
+      })
+      .finally(() => {
+        form.reset();
+        setLoading(false);
+      });
   };
 
   useEffect(() => {

@@ -9,7 +9,7 @@ import withReactContent from "sweetalert2-react-content";
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const { replace } = useRouter();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     withReactContent(Swal).fire({
@@ -18,7 +18,7 @@ export default function Login() {
       text: "We are processing your request",
       showConfirmButton: false,
     })
-    fetch("/api/auth/login", {
+    await fetch("/api/auth/login", {
       method: "POST",
       body: JSON.stringify({
         email: e.currentTarget.email.value,
