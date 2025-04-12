@@ -18,3 +18,10 @@ export interface RegisterProps {
   email: string;
   password: string;
 }
+
+export interface ArsipProps {
+  id: string,
+  title: string,
+  description: string,
+  image: string
+}

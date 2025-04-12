@@ -1,12 +1,25 @@
 "use client";
 
-import { onAdd } from "@/api/notes";
 import Row from "@/components/elements/Row";
 import PageView from "@/components/layouts/Beranda/PageView";
 import Link from "next/link";
 import * as FaIcons from "react-icons/fa";
 
 export default function Home() {
+  async function addNotes(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    await fetch("/api/notes/insert", {
+      method: "POST",
+      body: JSON.stringify({
+        title: data.get("namea"),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .finally(() => form.reset());
+  }
   return (
     <>
       <PageView />
@@ -50,20 +63,26 @@ export default function Home() {
         <h1 className="text-center">Hubungi Kami</h1>
         <div className="flex flex-col gap-8 my-5 md:flex-row">
           <form
-            action={onAdd}
+            onSubmit={(e) => addNotes(e)}
             className="flex flex-col gap-4 w-full md:w-[50%] items-center @container"
           >
             <div className="flex @md:flex-row flex-col gap-4 w-full">
-              <input type="text" name="name" placeholder="Nama" />
-              <input type="text" name="email" placeholder="Email" />
+              <input type="text" id="namea" name="namea" placeholder="Nama" required />
+              <input type="text" id="email" name="email" placeholder="Email" required />
             </div>
-            <input type="text" name="subject" placeholder="Subjek" />
+            <input
+              type="text"
+              name="subject"
+              id="subject"
+              placeholder="Subjek"
+              required
+            />
             <textarea
               name="message"
+              id="message"
+              className="max-h-[150px] h-[100px] min-h-max w-full"
               placeholder="Pesan"
-              id=""
-              // style={{ height: "100px" }}
-              className="max-h-[150px] min-h-max w-full"
+              required
             />
             <button type="submit" className="cursor-pointer">
               Kirim

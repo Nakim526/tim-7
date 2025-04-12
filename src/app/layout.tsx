@@ -5,7 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layouts/Navbar";
 import Footer from "@/components/layouts/Footer";
 import { usePathname } from "next/navigation";
-// import { SessionProvider } from "next-auth/react";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const disableLayout = ["/dashboard", "/auth/login", "/auth/register"];
+const disableLayout = ["/dashboard", "/dashboard/arsip", "/login", "/register"];
 
 export default function RootLayout({
   children,
@@ -31,7 +31,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main>
-          {/* <SessionProvider> */}
           {disableLayout.includes(currentPath) ? (
             <section className="p-0!">{children}</section>
           ) : (
@@ -41,7 +40,6 @@ export default function RootLayout({
               <Footer />
             </div>
           )}
-          {/* </SessionProvider> */}
         </main>
       </body>
     </html>

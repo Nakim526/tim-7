@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { LoginProps, RegisterProps } from "../interface";
-import { supabaseDB } from "./init";
+import { LoginProps, RegisterProps } from "../../interface";
+import { supabaseDB } from "../init";
 
 export async function register(data: RegisterProps) {
   const { data: user, error } = await supabaseDB.auth.signUp({
