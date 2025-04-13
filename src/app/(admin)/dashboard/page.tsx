@@ -157,7 +157,7 @@ export default function Dashboard() {
       </div>
       <div className="flex flex-col items-center w-full gap-4 m-8">
         <h1>Dashboard</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col w-2/5 gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full gap-4 md:w-2/5">
           <label htmlFor="title">Tittle</label>
           <input
             type="text"
@@ -192,7 +192,7 @@ export default function Dashboard() {
         </form>
         {data &&
           data.map((item: ArsipProps) => (
-            <div className="shadow-sm card bg-base-100 w-96" key={item.id}>
+            <div className="w-full shadow-sm card bg-base-100" key={item.id}>
               <figure>
                 <img src={item.image} alt="Shoes" />
               </figure>
