@@ -30,45 +30,58 @@ export default function Dashboard() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    withReactContent(Swal).fire({
-      icon: "info",
-      title: "Please Wait",
-      text: "We are processing your request",
-      showConfirmButton: false,
-    });
+    
     const form = e.currentTarget;
     const data = new FormData(form);
     const file = data.get("file") as File;
     data.append("fileName", file.name);
     data.append("mimeType", file.type);
 
-    await fetch("/api/arsip/insert", {
-      method: "POST",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 200) {
-          withReactContent(Swal).fire({
-            icon: "success",
-            title: "Success",
-            text: data.message,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        } else if (data.status === 500) {
-          withReactContent(Swal).fire({
-            icon: "error",
-            title: "Error",
-            text: data.message,
-            showConfirmButton: true,
-          });
-        }
+    console.log(file)
+
+    if (file.size > 3 * 1024 * 1024) {
+      return withReactContent(Swal).fire({
+        icon: "warning",
+        title: "Warning",
+        text: "File size must be less than 3MB",
+        showConfirmButton: true,
       })
-      .finally(() => {
-        form.reset();
-        setLoading(false);
-      });
+    }
+
+    withReactContent(Swal).fire({
+      icon: "info",
+      title: "Please Wait",
+      text: "We are processing your request",
+      showConfirmButton: false,
+    });
+
+    // await fetch("/api/arsip/insert", {
+    //   method: "POST",
+    //   body: data,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data.status === 200) {
+    //       withReactContent(Swal).fire({
+    //         icon: "success",
+    //         title: "Success",
+    //         text: data.message,
+    //         showConfirmButton: false,
+    //         timer: 1500,
+    //       });
+    //     } else if (data.status === 500) {
+    //       withReactContent(Swal).fire({
+    //         icon: "error",
+    //         title: "Error",
+    //         text: data.message,
+    //         showConfirmButton: true,
+    //       });
+    //     }
+    //   })
+    //   .finally(() => {
+    //     form.reset();
+    //     setLoading(false);
+    //   });
   };
 
   useEffect(() => {
@@ -177,6 +190,7 @@ export default function Dashboard() {
           <label htmlFor="image">Image</label>
           <input
             type="file"
+            accept="image/*"
             name="file"
             id="file"
             className="file-input file-input-primary"

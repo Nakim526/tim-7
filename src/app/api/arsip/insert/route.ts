@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       status: 200,
-      message: "Success",
+      message: "Your file has been uploaded successfully",
       title: req.title,
       description: req.description,
       data: data[0],
