@@ -30,14 +30,14 @@ export default function Dashboard() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    
+
     const form = e.currentTarget;
     const data = new FormData(form);
     const file = data.get("file") as File;
     data.append("fileName", file.name);
     data.append("mimeType", file.type);
 
-    console.log(file)
+    console.log(file);
 
     if (file.size > 3 * 1024 * 1024) {
       return withReactContent(Swal).fire({
@@ -45,7 +45,7 @@ export default function Dashboard() {
         title: "Warning",
         text: "File size must be less than 3MB",
         showConfirmButton: true,
-      })
+      });
     }
 
     withReactContent(Swal).fire({
@@ -55,33 +55,34 @@ export default function Dashboard() {
       showConfirmButton: false,
     });
 
-    // await fetch("/api/arsip/insert", {
-    //   method: "POST",
-    //   body: data,
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.status === 200) {
-    //       withReactContent(Swal).fire({
-    //         icon: "success",
-    //         title: "Success",
-    //         text: data.message,
-    //         showConfirmButton: false,
-    //         timer: 1500,
-    //       });
-    //     } else if (data.status === 500) {
-    //       withReactContent(Swal).fire({
-    //         icon: "error",
-    //         title: "Error",
-    //         text: data.message,
-    //         showConfirmButton: true,
-    //       });
-    //     }
-    //   })
-    //   .finally(() => {
-    //     form.reset();
-    //     setLoading(false);
-    //   });
+    await fetch("/api/arsip/insert", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then(async (data) => {
+        if (data.status === 200) {
+          await withReactContent(Swal).fire({
+            icon: "success",
+            title: "Success",
+            text: data.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else if (data.status === 500) {
+          await withReactContent(Swal).fire({
+            icon: "error",
+            title: "Error",
+            text: data.message,
+            showConfirmButton: true,
+          });
+        }
+      })
+      .finally(() => {
+        form.reset();
+        setLoading(false);
+        Swal.close();
+      });
   };
 
   useEffect(() => {
@@ -170,7 +171,10 @@ export default function Dashboard() {
       </div>
       <div className="flex flex-col items-center w-full gap-4 m-8">
         <h1>Dashboard</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col w-full gap-4 md:w-2/5">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col w-full gap-4 md:w-2/5"
+        >
           <label htmlFor="title">Tittle</label>
           <input
             type="text"
