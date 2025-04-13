@@ -56,7 +56,7 @@ export default function Dashboard() {
             showConfirmButton: false,
             timer: 1500,
           });
-        } else {
+        } else if (data.status === 500) {
           withReactContent(Swal).fire({
             icon: "error",
             title: "Error",
