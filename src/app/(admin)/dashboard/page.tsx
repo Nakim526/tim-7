@@ -40,6 +40,7 @@ export default function Dashboard() {
     console.log(file);
 
     if (file.size > 3 * 1024 * 1024) {
+      setLoading(false);
       return withReactContent(Swal).fire({
         icon: "warning",
         title: "Warning",
